@@ -6,7 +6,7 @@
 
 class memory;
 
-using key_t = __int32_t;
+using key_type = int; // TODO: fix
 
 class cache_t {
 private:
@@ -18,11 +18,11 @@ private:
 
 public:
     cache_t(size_t initial_size, memory * storage): capacity(initial_size), cache(), hash(), storage(storage) {}
-    bool cache_lookup(key_t key);
+    bool cache_lookup(key_type key);
     size_t get_size() {return cache.size();}
     void dump_cache();
 private:
-    void update_cache(key_t key);
+    void update_cache(key_type key);
 };
 
 class memory {

@@ -3,14 +3,14 @@
 #include <memory.h>
 #include "../include/log.h"
 
-int memory::read_memory(key_t key) {
+int memory::read_memory(key_type key) {
     return key;
 }
 
-bool memory::memory_lookup(key_t key) {
+bool memory::memory_lookup(key_type key) {
     return cache.cache_lookup(key);
 }
-void cache_t::update_cache(key_t key) {
+void cache_t::update_cache(key_type key) {
     PRINT_DEBUG(std::cout << "cache before update for " << key << std::endl;)
     PRINT_DEBUG(dump_cache();)
 
@@ -23,7 +23,7 @@ void cache_t::update_cache(key_t key) {
      
     if (get_size() > capacity) {
         list_it lr_elem_it = cache.begin();
-        key_t key_victim = *lr_elem_it;
+        key_type key_victim = *lr_elem_it;
         cache.pop_front();
         hash.erase(key_victim);
     }
@@ -31,7 +31,7 @@ void cache_t::update_cache(key_t key) {
     PRINT_DEBUG(dump_cache();)
 }
 
-bool cache_t::cache_lookup(key_t key) {
+bool cache_t::cache_lookup(key_type key) {
     if (hash.count(key)) {
         cache.splice(cache.end(), cache, hash[key]);
         return true;
