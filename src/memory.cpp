@@ -1,7 +1,6 @@
 #include "../include/memory.h"
 #include <iostream>
 #include <memory.h>
-#include <sys/_types/_key_t.h>
 #include "../include/log.h"
 
 int memory::read_memory(key_t key) {

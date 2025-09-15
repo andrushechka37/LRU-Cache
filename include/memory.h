@@ -3,9 +3,11 @@
 #include <list>
 #include <unordered_map>
 #include <vector>
-#include <sys/_types/_key_t.h>
 
 class memory;
+
+using key_t = __int32_t;
+
 class cache_t {
 private:
     size_t capacity;
