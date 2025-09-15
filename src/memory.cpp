@@ -19,7 +19,7 @@ void cache_t::update_cache(key_t key) {
 
     cache.push_back(data);
     using list_it = std::list<int>::iterator;
-    list_it new_it= cache.end();
+    list_it new_it= std::prev(cache.end());
     hash[key] = new_it;
      
     if (get_size() > capacity) {
