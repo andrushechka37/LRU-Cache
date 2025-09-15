@@ -1,0 +1,19 @@
+name: Build and test project on linux
+on: [push]
+
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: make test
+
+      - name: Run tests
+        run: ./mem
+
+      - name: Report success
+        if: success()
+        run: echo "Tests passed!"
