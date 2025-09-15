@@ -2,7 +2,6 @@
 #include <cstddef>
 #include <iostream>
 #include <memory.h>
-#include "../include/log.h"
 
 struct test_data {
     size_t size_of_cache;
@@ -22,10 +21,10 @@ int main() {
     };
     size_t num_of_failed = 0;
     for (size_t i = 0; i < tests.size(); i++) {
-        memory mem(tests[i].size_of_cache, tests[i].size_of_data, tests[i].data);
+        memory_manager<int> mem(tests[i].size_of_cache, tests[i].data);
         int cache_hit_count = 0;
         for (int n = 0; n < tests[i].size_of_data; n++) {
-            cache_hit_count += mem.memory_lookup(tests[i].data[n]);
+            cache_hit_count += mem.get_data(tests[i].data[n]);
         }
         if (cache_hit_count != tests[i].correct_hits) {
             num_of_failed++;
