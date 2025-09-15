@@ -3,7 +3,7 @@
 #include <list>
 #include <unordered_map>
 #include <vector>
-
+#include <sys/_types/_key_t.h>
 
 class memory;
 class cache_t {
